@@ -1,0 +1,86 @@
+{
+  "theme": "Light",
+  "archetype": "Archetype 4 (Swiss & High-Contrast)",
+  "aesthetic_vibe": "Technical Drafting Board / Blueprint. Highly functional, objective, and precise.",
+  "typography": {
+    "fonts": [
+      {
+        "family": "Outfit",
+        "usage": "Headings and primary titles",
+        "import_instructions": "Import from Google Fonts"
+      },
+      {
+        "family": "IBM Plex Sans",
+        "usage": "Body text and standard UI elements",
+        "import_instructions": "Import from Google Fonts"
+      },
+      {
+        "family": "JetBrains Mono",
+        "usage": "Mathematical equations, coordinates, labels, and data points",
+        "import_instructions": "Import from Google Fonts"
+      }
+    ],
+    "hierarchy": {
+      "h1": "text-4xl font-light tracking-tighter uppercase",
+      "h2": "text-2xl font-normal tracking-tight",
+      "h3": "text-lg font-medium tracking-tight",
+      "body": "text-sm leading-relaxed font-sans",
+      "mono_label": "text-xs font-mono uppercase tracking-[0.2em] text-black/60",
+      "equation_text": "text-base font-mono tracking-tight"
+    }
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F5F5F0",
+    "border": "#E5E5E5",
+    "text_primary": "#111111",
+    "text_secondary": "#666666",
+    "interactive_primary": "#111111",
+    "interactive_hover": "#333333",
+    "graph_colors": [
+      "#FF2A00", 
+      "#002FA7", 
+      "#007A33", 
+      "#FF9500", 
+      "#E5005A"
+    ]
+  },
+  "layout": {
+    "grid_system": "Control Room Grid (grid-cols-1 md:grid-cols-4 lg:grid-cols-5)",
+    "sidebar": "col-span-1 md:col-span-1 lg:col-span-1 border-r border-black/10 h-screen overflow-y-auto bg-[#F5F5F0] p-6 flex flex-col gap-8",
+    "graph_area": "col-span-1 md:col-span-3 lg:col-span-4 h-screen relative bg-white overflow-hidden",
+    "spacing_scale": "Generous internal padding for containers (p-6). Tight gaps for mathematical inputs (gap-2)."
+  },
+  "components": {
+    "general_rules": "Strict geometric minimalism. Override Shadcn default border-radius to 0 (rounded-none). No drop shadows. Use 1px hard borders.",
+    "buttons": "Flat. Primary: pure black background, white text. Secondary: transparent background, black text, 1px solid black border. Use font-mono or sans uppercase.",
+    "inputs": "Shadcn input with rounded-none, border-black/20, bg-white, focus-visible:ring-1 focus-visible:ring-black focus-visible:border-black. Font must be monospace for equations.",
+    "dropdowns": "Shadcn Select with rounded-none, sharp corners. Use for Fit Type (Linear, Polynomial, etc.).",
+    "panels": "Use simple stacked sections with a bottom border (border-b border-black/10) to separate 'Equations' and 'Points' inputs.",
+    "color_indicators": "Use a small 12x12 pure square (rounded-none) next to the equation input to indicate its graph color."
+  },
+  "interactions": {
+    "hover_states": "Buttons translate-y-[-1px] with box-shadow: 2px 2px 0px 0px #111111 (Neo-brutalist interaction).",
+    "graph_interactivity": "Pan and Zoom enabled. Clicking on the coordinate plane should place a point. Hovering over a line should highlight the equation.",
+    "transitions": "Fast, precise, 150ms ease-in-out for UI state changes."
+  },
+  "assets": {
+    "icons_library": "@phosphor-icons/react",
+    "icons_usage": "Weight 'regular'. Keep them stark, uncolored (black).",
+    "graphing_libraries_recommended": ["mafs", "function-plot", "mathjs", "regression"]
+  },
+  "testing": {
+    "data_testid_rules": "All interactive elements MUST have data-testid attributes (e.g., 'equation-input-0', 'add-point-btn', 'export-graph-btn', 'fit-type-select')."
+  },
+  "instructions_to_main_agent": [
+    "1. Setup Fonts: Add Outfit, IBM Plex Sans, and JetBrains Mono from Google Fonts in index.html or global CSS.",
+    "2. Override tailwind.config.js to set '--radius' to '0rem' for the authentic Brutalist/Swiss technical look.",
+    "3. Use 'mafs' (yarn add mafs) or 'function-plot' for rendering the coordinate plane. 'mafs' provides a beautiful React-based graphing plane out of the box with pan/zoom. Alternatively, use standard D3 or Recharts if you prefer manual drawing.",
+    "4. Use 'mathjs' for formula evaluation and parsing. Use the 'regression' package to handle curve fitting (linear regression, polynomial interpolation) based on user-placed points.",
+    "5. Ensure the layout is a full viewport height (h-screen) with a fixed scrollable sidebar on the left and the graph occupying the entire right section.",
+    "6. Iterate through the 'graph_colors' array to assign unique colors to each new mathematical function.",
+    "7. Implement an export feature using 'html-to-image' to capture the graph container.",
+    "8. Keep the UI strictly monochrome (black/white/grey). The ONLY elements that should have color are the graph lines and their corresponding color-indicator squares in the sidebar."
+  ],
+  "image_urls": {}
+}
